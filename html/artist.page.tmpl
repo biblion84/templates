@@ -1,0 +1,52 @@
+{{template "common" .}}
+
+{{define "title"}}Artist{{end}}
+
+{{define "head"}}
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+{{end}}
+
+{{define "main"}}
+    <div>
+        {{.ExistePas}}
+    {{with .Artist}}
+        <!-- Valeur du point -> Artist -->
+        <div>Name : {{.Artist.Name}}</div>
+        <div>Age : {{.Artist.Age}}</div>
+        <div>Genre : {{.Artist.MusicGenre}}</div>
+
+
+
+
+
+    {{end}}
+
+
+    {{range .Countries}}
+        <!-- Valeur du point -> mes villes -->
+        <div>
+            Nom du pays : {{.Name}}
+        {{range .Cities}}
+            <div>{{.}}</div>
+        {{end}}
+        </div>
+    {{end}}
+    </div>
+    <div id="mesMemes" >
+        <div id='map' style='width: 400px; height: 300px;'></div>
+        <script>
+            // TO MAKE THE MAP APPEAR YOU MUST
+            // ADD YOUR ACCESS TOKEN FROM
+            // https://account.mapbox.com
+            mapboxgl.accessToken = 'pk.eyJ1IjoibHVjYXN5dHJhY2siLCJhIjoiY2tuZnI2b3BiMDAxbjJvb2IxbndxaTZ3eSJ9.kHmqyODiPde1FJGVLZbbXw';
+            var map = new mapboxgl.Map({
+                container: 'map', // container ID
+                style: 'mapbox://styles/mapbox/streets-v11', // style URL
+                center: [-74.5, 40], // starting position [lng, lat]
+                zoom: 9 // starting zoom
+            });
+
+        </script>
+    </div>
+{{end}}

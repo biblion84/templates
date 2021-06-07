@@ -1,0 +1,27 @@
+{{define "common"}}
+<html>
+<head>
+    <link rel="stylesheet" href="/static/css/monCss.css">
+    <title>Groupie Tracker - {{template "title" .}}</title>
+    {{block "head" .}}{{end}}
+</head>
+<body>
+<div id="header">
+    <h1>Youpie Tracker</h1>
+    <span class="search">
+        <input type="text" placeholder="search" id="searchBar" />
+
+    </span>
+    <hr>
+    <br>
+    <br>
+    <br>
+</div>
+
+{{template "main" .}}
+
+
+</body>
+
+</html>
+{{end}}

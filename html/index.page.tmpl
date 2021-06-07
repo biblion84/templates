@@ -1,0 +1,44 @@
+{{template "common" .}}
+
+{{define "title"}}Homepage{{end}}
+
+{{define "main"}}
+    <div id="mesMemes" >
+        {{$test := index .Members 0}}
+        {{$test}}
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        {{range $index, $value := .Files}}
+{{/*         TODO : Voir comment enchainer plusieurs fonctions   */}}
+            {{if  add $index 1 4 | eq 5 | eq true }}
+                <div>Wahou</div>
+            {{else}}
+                <div>Nop</div>
+            {{end}}
+            <a href="/static/{{.Name}}">{{$index}} {{.Name}}</a>
+        {{end}}
+
+        <div id="myDiv">
+            <button>{{.ButtonValue}}</button>
+        </div>
+
+{{/*        {{printf "%q" "output"}}*/}}
+
+
+        <a href="/form" download="test.jpg">Download</a>
+        <form action="/formulaire" method="POST">
+            <label for="aText">Text ascii</label>
+            <input id="aText" name="asciiText" type="text">
+            <button type="submit">Envoyer</button>
+        </form>
+    </div>
+{{end}}
